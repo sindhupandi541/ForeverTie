@@ -19,3 +19,17 @@
     display: grid;
     grid-template-columns: repeat(2,1fr);
 }
+.error-container {
+    position: relative;
+    text-align: center;
+}
+
+.error-message {
+    color: red;
+    font-size: 14px;
+    margin-top: 5px;
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+  -webkit-appearance: none; 
+}
