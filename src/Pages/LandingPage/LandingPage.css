@@ -1,0 +1,112 @@
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Gothic&display=swap');
+
+.navbar{
+    padding: 0 5%;
+    background-color: #e72e77;
+}
+.navbar-container{
+    margin: auto;
+    display: flex;
+    height: 100px;
+    align-items: center;
+}
+.navbar-logo{
+    font-size: xx-large;
+    text-decoration: none;
+    color: white;
+    font-family: cursive;
+}
+.nav-menu{
+    display: flex;
+    margin-left: auto;
+    margin-right: 50px;
+    gap:30px;
+}
+.nav-item, .nav-item>a ,.nav-links{
+    padding: 10px;
+    border-radius: 40px;
+    font-family: cursive;
+    color: white;
+    height: 30px;
+    width: 100px;
+    text-align: center;
+    /* font-size: larger; */
+    list-style: none;
+    text-decoration: none;
+}
+.nav-item>.nav-links{
+    background-color: #b4245d;
+
+}
+.Outer-Container{
+    padding-top: 20px;
+    margin-bottom: 20px;
+}
+
+.cards{
+    padding:20px;
+    text-align: center;
+    justify-content: center;
+    display: grid;
+    gap:20px;
+    grid-template-columns: repeat(5, 1fr);
+}
+.category-item>img{
+    cursor: pointer;
+    height: 200px;
+    float: right;
+    clip-path: ellipse(99% 140px at 100% 50%);
+}
+
+.card-item:hover {
+    filter: brightness(100%);
+}
+.categories-inner-container{
+    display: grid;
+    grid-template-columns: repeat(3,1fr);
+    gap: 20px;
+    justify-content: center;
+}
+
+.categories{
+    margin: auto;
+    text-align: center;
+    font-family: 'Nanum Gothic', sans-serif;
+}
+
+.category-item {
+    display: flex; /* Use Flexbox */
+    flex-direction: row; /* Stack elements vertically */
+    width: 100%;
+    align-items: center;
+}
+.category-item span {
+    text-align: center;
+    font-size: xx-large;
+    margin-left: auto;
+}
+
+.category-item img {
+    margin-left: auto; /* Push img to the right */
+}
+.about{
+    text-align: justify;
+    display: grid;
+    font-family:'Nanum Gothic', sans-serif ;
+    font-size: large;
+    gap: 10px;
+    width: 80%;
+    padding: 20px;
+    margin: auto;
+    border-radius: 20px;
+}
+.title{
+    letter-spacing: 2px;
+    font-size: xx-large;
+
+}
+.about-content{
+    font-family: proxima-nova, sans-serif;
+    font-size: large;
+    letter-spacing: 1px;
+}

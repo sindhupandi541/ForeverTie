@@ -1,0 +1,21 @@
+.register-container{
+    margin: 40px auto;
+    width: 80%;
+    display: grid;
+    border-radius: 20px;
+    grid-template-columns:50% 50%;
+    box-shadow: rgba(0, 0, 0, 0.4) 0px 30px 60px;
+}
+.register-container>img{
+    height: 100%;
+    width: 100%;
+    /* filter: blur(3px); */
+    /* filter: brightness(90%); */
+    box-shadow: inset;
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+.register-inputs{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}
