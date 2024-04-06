@@ -1,48 +1,36 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import LandingNav from '../LandingPage/LandingNav';
+import ImageUploader from '../../Components/ImageUploader/ImageUploader';
 import axios from 'axios';
 
 export default function Home() {
-  const [selectedFiles, setSelectedFiles] = useState(null);
+  const [imagesList, setImagesList] = useState([]);
 
-  const handleFileChange = (event) => {
-    setSelectedFiles(event.target.files);
-  };
-
-  const handleUpload = async () => {
-    if (!selectedFiles || selectedFiles.length === 0) {
-      alert('Please select at least one image to upload.');
-      return;
-    }
-
-    const formData = new FormData();
-    for (let i = 0; i < selectedFiles.length; i++) {
-      formData.append('photos', selectedFiles[i]);
-    }
-
-    try {
-      const response = await axios.post('http://localhost:8081/uploadImage', formData, {
-        headers: {
-          'Content-Type': 'multipart/form-data'
-        }
-      });
-
-      console.log(response.data);
-      alert('Images uploaded successfully!');
-      setSelectedFiles(null);
-    } catch (error) {
-      console.error('Error uploading images:', error);
-      alert('An error occurred while uploading the images. Please try again later.');
-    }
-  };
+  useEffect(() => {
+    const loadImages = async () => {
+      try {
+        const res = await axios.get('http://localhost:8081/getServiceImages');
+        const data = res.data.Result;
+        const updatedImages = data.map((ele) => ({
+          ...ele,
+          image_data: btoa(String.fromCharCode(...ele.image_data.data))
+        }));
+        setImagesList(updatedImages);
+      } catch (err) {
+        console.error(err);
+      }
+    };
+    return loadImages(); // Corrected: Call loadImages directly in useEffect
+  }, []); // Empty dependency array ensures useEffect runs only once
 
   return (
     <>
-      <LandingNav userLoggedIn='customer' />
+      <LandingNav userLoggedIn="customer" />
+      <ImageUploader />
       <div>
-        <h1>Upload Images</h1>
-        <input type="file" multiple onChange={handleFileChange} />
-        <button onClick={handleUpload}>Upload</button>
+        {imagesList.map((ele, index) => (
+          <img key={index} src={`data:image/png;base64,${ele.image_data}`} alt="" />
+        ))}
       </div>
     </>
   );

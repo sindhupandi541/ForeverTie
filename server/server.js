@@ -3,7 +3,7 @@ import mysql from "mysql";
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import multer from 'multer';
-import fs from 'fs';
+// import { rows } from "mssql";
 
 const app = express();
 app.use(cors());
@@ -27,11 +27,7 @@ con.connect((err) => {
 });
 
 const upload = multer({storage:multer.memoryStorage()})
-app.post('/uploadImage', upload.array('photos', 12), function (req, res, next) {
-  const sql = 'INSERT INTO service_images (service_id, image_data) VALUES (1, ?)';
-  const imageData = JSON.stringify(req.files)
-  console.log(typeof imageData)
-});
+
 
 
 app.post("/login", (req, res) => {
@@ -76,6 +72,29 @@ app.post("/register", (req, res) => {
   });
 });
 
+app.post("/uploadImage",upload.single('image'), (req, res) => {
+  const serviceId = req.body.service_id;
+  const image = req.file.buffer.toString('base64');
+  const sql = "INSERT INTO service_images (service_id, image_data) VALUES (?, ?)";
+  con.query(sql,[serviceId,image],(err, result) => {
+    if (err) {
+      console.log("Error in registration query:", err);
+      return res.status(500).json({ error: "Internal Server Error" });
+    }
+    res.json({ message: "Registration successful" });
+  });
+
+  console.log(image);
+  
+});
+
+app.get('/getServiceImages',(req,res)=>{
+  const sql="SELECT * FROM service_images";
+  con.query(sql,(err,result)=>{
+      if(err) return res.json({Error:"Got an error in the sql"});
+      return res.json({Status:"Success",Result:result})
+  })
+})
 app.listen(8081, () => {
   console.log("Server is running on port 8081");
 });

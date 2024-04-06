@@ -1,0 +1,43 @@
+.image-item{
+    display: flex;
+    column-gap:20px;
+    /* align-items: center; */
+}
+
+.image-item>img{
+    height: 200px;
+    width: 150px;
+    border-radius: 20px;
+}
+.upload__image-wrapper{
+    margin: auto;
+}
+.selected-images{
+    margin: 20px;
+    display: grid; 
+    grid-template-columns: repeat(4,1fr);
+    gap: 20px;
+}
+.Upload-buttons{
+    border: none;
+    border-radius: 20px;
+    height: 40px;
+    width: 300px;
+}
+.handle-buttons{
+    cursor: pointer;
+    border: none;
+    border-radius: 20px;
+    height: 40px;
+    width: 100px;
+    background-color: #b4245d;
+    color: white;
+}
+.image-item__btn-wrapper{
+    display: grid;
+    margin: 20px 10px;
+}
+.Upload-buttons-wrapper{
+    margin: 20px 0 0 20%;
+
+}
