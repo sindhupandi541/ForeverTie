@@ -1,0 +1,103 @@
+/* DetailPage.css */
+.detail-page-container {
+    max-width: 70%;
+    margin: 0 auto;
+    padding: 20px;
+    font-family: 'calibri';
+  }
+  
+  .detail-heading {
+    text-align: center;
+    /* color: #e72e77; */
+    margin-bottom: 20px;
+  }
+  
+  .service-details {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+  }
+  
+  .service-info {
+    margin: auto 10px ;
+  }
+  
+  .image-gallery {
+    flex: 1;
+  }
+  
+  .image-grid {
+    margin-top: 20px;
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 10px;
+    overflow-x: scroll;
+    scrollbar-width: none;
+  }
+  
+  .image-grid img {
+    width: 170px;
+    height: 120px;
+    border-radius: 10px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  h2 {
+    font-size: 28px;
+    color: #e72e77;
+    text-transform: capitalize;
+  }
+  .main-image-container>h3{
+    color: #e72e77;
+  }
+  .service-info>p {
+    font-size: 26px;
+    color: #333;
+  }
+  
+  strong {
+    font-weight: bold;
+    color: #e72e77;
+  }
+  .main-image-container{
+    justify-content: center;
+    text-align: center;
+  }
+  .main-image-container>img{
+    height: 40vh;
+    border-radius: 20px;
+    transition: all 0.5s ease;
+  }
+
+  .main-container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    /* align-items: center; */
+    gap: 20px;
+  }
+  .reserve-button{
+    cursor: pointer;
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    background-color: #e72e77;
+    border: none;
+    height: 50px;
+    width: 200px;
+    border-radius: 10px;
+  }
+  .reserve-button>button{
+    cursor: pointer;
+    background-color: transparent;
+    border: none;
+    color: white;
+    font-size: larger;
+    height: inherit;
+  }
+  .buttons-group{
+    display: flex;
+    gap: 20px;
+  }
+  .selected-image {
+    border: 2px solid #e72e77;
+    /* transform: scale(1.1); */
+  }

@@ -1,0 +1,119 @@
+/* DemoApp.css */
+
+/* Container styles */
+.demo-container {
+    gap: 20px;
+    display: flex; /* Use flexbox for layout */
+    max-width: 900px;
+    margin: 20px auto;
+    padding: 20px;
+    border: 1px solid lightgray;
+    border-radius: 10px;
+    background-color: #f9f9f9;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: box-shadow 0.3s ease;
+  }
+  
+  /* Title styles */
+  .demo-title {
+    margin-bottom: 20px;
+    color: #e72e77;
+    text-align: center;
+  }
+  
+  /* Calendar container styles */
+  .full-calendar {
+    padding: 10px;
+    height: 400px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: scroll;
+    scrollbar-width: none;
+    transition: box-shadow 0.3s ease;
+    flex: 1; /* Allow the calendar to grow to fill remaining space */
+  }
+  
+  
+  
+  /* Dropdown container styles */
+  .select-container {
+    margin-left: 20px; /* Add some space between calendar and dropdown */
+  }
+  
+  /* Dropdown styles */
+  #addresses {
+    width: 100%;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid lightgray;
+    background-color: #fff;
+    color: #333;
+    font-size: 16px;
+    cursor: pointer;
+    outline: none;
+    transition: border-color 0.3s ease;
+  }
+  
+  
+  .fc-button.fc-button-primary {
+    background-color: white;
+    color: #e72e77;
+    border: 1px solid #e72e77;
+    /* box-shadow: none; */
+  }
+  
+  .fc-button.fc-button-primary:hover {
+    background-color: #e72e77;
+    color: white;
+    /* border: #e72e77; */
+  }
+  
+  .fc-button.fc-button-primary:disabled {
+    display: none;
+  }
+  
+  .fc .fc-button-primary:not(:disabled).fc-button-active,
+  .fc .fc-button-primary:not(:disabled):active {
+    /* pointer-events: none; */
+    background-color: transparent;
+    border: none;
+  }
+  .fc-day-today{
+    background-color: transparent !important;
+    color:#e72e77;
+    border-radius: 5px;
+    font-weight: 900;
+  }
+  
+  .fc-day-today:hover{
+  background-color: #e72e77 !important;
+  color: #fff;
+  }
+  
+  
+  /* Hover styles for calendar days */
+  .fc-day:hover,
+  .fc-day-future:hover {
+    border-radius: 5px;
+    cursor: pointer;
+    background-color: #e72e77;
+    color: white;
+  }
+  
+  .fc-day.fc-day-past {
+    cursor: not-allowed;
+  }
+  
+  .selected-data{
+    justify-content: center;
+    text-align: center;
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    
+  }
+  .selected-data>div>span{
+    color: #e72e77;
+  }
+  
