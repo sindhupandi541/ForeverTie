@@ -30,7 +30,6 @@ export default function Register() {
     const hasNoErrors = Object.keys(validationErrors).length === 0;
     if (hasNoErrors) {
       delete values.ConfirmPassword;
-      console.log(values);
       axios.post('http://localhost:8081/register', values)
   .then(response => {
     console.log(response.data);
@@ -63,7 +62,7 @@ export default function Register() {
     <>
       <LandingNav />
       <div className="register-container">
-        <img src="assets/register.png" alt="" />
+        <img src="assets/register.png" alt="" loading='lazy'/>
         <div style={{ paddingTop: '20px', margin: '10px', marginLeft: '40px' }}>
           <div className="title" style={{ textAlign: 'center' }}>Register</div>
           <div className="register-inputs">

@@ -1,26 +1,54 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import './LandingPage.css';
 
 export default function LandingNav({ userLoggedIn }) {
+  const navigate = useNavigate();
+
+  const handleLogoutClick = () => {
+    window.sessionStorage.setItem('UserType', '');
+    window.sessionStorage.setItem('UserId', '');
+    navigate("/login");
+  };
+
   return (
     <div className="navbar">
       <div className="navbar-container">
-        {userLoggedIn === 'customer' ? (
-          <Link to="/home" className="navbar-logo">
-            ForeverTie
-          </Link>
-        ) : userLoggedIn === 'admin' ? (
-          <Link to="/admin" className="navbar-logo">
-            ForeverTie
-          </Link>
-        ) : (
-          <Link to="/" className="navbar-logo">
-            ForeverTie
-          </Link>
-        )}
+        <Link to={userLoggedIn === 'admin' ? '/admin' : userLoggedIn === 'customer' ? '/home' : '/'} className="navbar-logo">
+          ForeverTie
+        </Link>
+
         <ul className="nav-menu">
-          {userLoggedIn && (
+          {userLoggedIn === 'admin' && (
+            <>
+              <li className="nav-item">
+                <Link to="/venues">
+                  Venue
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/caters">
+                  Caterer
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/decors">
+                  Decorer
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/payments">
+                  Payments
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/login" className="nav-links" onClick={handleLogoutClick}>
+                  Logout
+                </Link>
+              </li>
+            </>
+          )}
+          {userLoggedIn === 'customer' && (
             <>
               <li className="nav-item">
                 <Link to="/venue">
@@ -28,22 +56,34 @@ export default function LandingNav({ userLoggedIn }) {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/caterer">
+                <Link to="/cater">
                   Caterer
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/decorer">
+                <Link to="/decor">
                   Decorer
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/cart">
+                  cart
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/login" className="nav-links" onClick={handleLogoutClick}>
+                  Logout
                 </Link>
               </li>
             </>
           )}
-          <li className="nav-item">
-            <Link to={userLoggedIn ? "/logout" : "/login"} className="nav-links">
-              {userLoggedIn ? 'Logout' : 'Login'}
-            </Link>
-          </li>
+          {!userLoggedIn && (
+            <li className="nav-item">
+              <Link to="/login" className="nav-links">
+                Login
+              </Link>
+            </li>
+          )}
         </ul>
       </div>
     </div>

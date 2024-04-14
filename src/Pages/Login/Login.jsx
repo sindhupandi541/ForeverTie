@@ -40,9 +40,15 @@ axios.post('http://localhost:8081/login', values)
       }
     });
   } else {
-    localStorage.setItem('UserType',status);
-    localStorage.setItem('UserId',Id);
-    navigate('/home')
+    if(status === 'customer')
+    {
+      navigate('/Filter')
+    }
+    else{
+      navigate('/admin')
+    }
+    window.sessionStorage.setItem('UserType',status);
+    window.sessionStorage.setItem('UserId',Id);
   }
 })
 .catch(error => {
@@ -56,7 +62,7 @@ axios.post('http://localhost:8081/login', values)
     <>
     <LandingNav/>
     <div className="login-container">
-        <img src="assets/login.png" alt="" />
+        <img src="assets/login.png" alt="" loading='lazy'/>
 <div style={{paddingTop:'20px',justifyContent:'center'}}>
     <div className="title" style={{textAlign:'center'}}>Login</div>
     <div className="form">

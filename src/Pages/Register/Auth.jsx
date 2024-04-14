@@ -3,7 +3,6 @@ function Auth(values) {
     const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     const passwordPattern = /^[a-zA-Z0-9!@#$%^&*()_+}{":;?/>.<,|\\~`\-=[\]\\';,/]{8,}$/;
     const phonePattern = /^[0-9]{10}$/;
-    const usernamePattern = /^[a-zA-Z0-9]{3,}$/;
     
     if (!values.FirstName) {
         errors.FirstName = "First Name should not be empty";

@@ -1,0 +1,17 @@
+.addService-outer-container{
+    box-sizing: border-box;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    width: 80%;
+    margin:5% auto;
+    border-radius: 20px;
+    padding: 20px;
+}
+.add-service-title{
+    font-size: large;
+    color: #e72e77;
+    text-transform: uppercase;
+}
+.addService-inner-container{
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+}

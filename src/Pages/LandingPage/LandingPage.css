@@ -71,7 +71,7 @@
 .categories{
     margin: auto;
     text-align: center;
-    font-family: 'Nanum Gothic', sans-serif;
+    /* font-family: 'Nanum Gothic', sans-serif; */
 }
 
 .category-item {
@@ -92,7 +92,7 @@
 .about{
     text-align: justify;
     display: grid;
-    font-family:'Nanum Gothic', sans-serif ;
+    /* font-family:'Nanum Gothic', sans-serif ; */
     font-size: large;
     gap: 10px;
     width: 80%;
@@ -106,7 +106,7 @@
 
 }
 .about-content{
-    font-family: proxima-nova, sans-serif;
+    /* font-family: proxima-nova, sans-serif; */
     font-size: large;
     letter-spacing: 1px;
 }
