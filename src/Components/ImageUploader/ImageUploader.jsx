@@ -1,33 +1,63 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ImageUploading from 'react-images-uploading';
 import "./ImageUploader.css";
+import imageCompression from 'browser-image-compression';
+import swal from 'sweetalert';
+import { useNavigate } from 'react-router-dom';
+import ScaleLoader from "react-spinners/ScaleLoader";
 
-export default function ImageUploader() {
-    const service_id =1;
+export default function ImageUploader({service_id,imageslist}) {
   const [images, setImages] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const maxNumber = 12;
-
+  let navigate = useNavigate();
   const onChange = (imageList, addUpdateIndex) => {
     setImages(imageList);
   };
+  // useEffect(() => {
+  //   console.log(imageslist);
+  //   if (imageslist !== undefined) {
+  //     console.log(imageslist);
+  //     setImages(imageslist);
+  //   }
+  // }, [imageslist]);
+  
 
   const handleUpdate = async () => {
-    let formData={service_id:service_id,image:''};
+    setIsLoading(true)
     try {
+      console.log('service_id',service_id);
+      let formData={service_id:'',image:''};
       for (let i = 0; i < images.length; i++) {
-        formData.image=  images[i].file;
-  
+        formData.service_id = service_id;
+        formData.image=  await compressImage(images[i].file);
+
+        console.log(formData.image);
         await uploadImage(formData);
       }
-      alert('Images uploaded successfully!');
+      setIsLoading(false)
+      swal({
+        title: 'Success',
+        text: 'Service added',
+        icon: "success",
+      })
+      navigate(-1);
       setImages([]);
     } catch (error) {
       console.error('Error uploading images:', error);
       alert('An error occurred while uploading the images. Please try again later.');
     }
   };
-  
+  const compressImage = async (file) => {
+    const options = {
+      maxSizeMB: 0.2,
+      maxWidthOrHeight: 500,
+      useWebWorker: true,
+    }
+    const compressedFile = await imageCompression(file, options);
+    return compressedFile;
+  };
   const uploadImage = async (formData) => {
     try {
       await axios.post('http://localhost:8081/uploadImage', formData, {
@@ -44,6 +74,16 @@ export default function ImageUploader() {
 
   return (
     <div>
+      {isLoading === true && (
+        <div className="spinner-overlay">
+          <div className="spinner-container">
+            <ScaleLoader color="#e72e77" />
+          </div>
+        </div>
+      )}
+      {/* {Object.entries(imageslist)} */}
+      {imageslist=== undefined &&
+      
       <ImageUploading
         multiple
         value={images}
@@ -98,6 +138,15 @@ export default function ImageUploader() {
           </div>
         )}
       </ImageUploading>
+      }
+      { imageslist != null  && (
+  imageslist.map((image, index) => (
+    <div key={index} className="image-item" style={{ display: 'inline' }}>
+      <img src={`data:image/png;base64,${image}`} alt="" width="100" name='image' style={{ marginRight: '25px' }} />
+    </div>
+  ))
+)}
+
     </div>
   );
 }
