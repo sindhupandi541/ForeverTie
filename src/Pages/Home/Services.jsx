@@ -112,7 +112,7 @@ console.log(res.data.Result)
   }
 
   async function deleteService(service) {
-    const res = await axios.delete(`http://localhost:8081/deleteService/${service.id}`);
+    const res = await axios.delete(`https://server-tjm9.onrender.com/deleteService/${service.id}`);
     setTimeout(() => {
       swal({
         title: "Success",
