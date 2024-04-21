@@ -3,18 +3,14 @@ import mysql from "mysql";
 import cors from 'cors';
 import cookieParser from 'cookie-parser';
 import multer from 'multer';
+import dotenv from 'dotenv';
 
+dotenv.config();
 const app = express();
 app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 
-// const con = mysql.createConnection({
-//   host: "localhost",
-//   user: "root",
-//   password: "Admin@123",
-//   database: "marriage",
-// });
 const con = mysql.createConnection({
   host: process.env.HOST,
   user: process.env.USER,
