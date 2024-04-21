@@ -39,9 +39,10 @@ app.post("/login", (req, res) => {
       return res.json({ status: "Error", error: "Error in running query" });
     }
     if (result.length > 0) {
-      const { Id, UserType } = result[0];
+      console.log(result[0]);
+      const { id, UserType } = result[0];
       if (UserType === "admin" || UserType === "customer") {
-        return res.json({ status: UserType, id: Id });
+        return res.json({ status: UserType, id: id });
       }
     }
     return res.json({ status: "Error", message: "User Not found" });
@@ -87,14 +88,14 @@ app.get('/getServices', (req, res) => {
   const date = req.query.date;
   const address = req.query.address;
   console.log(date);
-const sql = `SELECT s.* FROM services_with_limited_images AS s 
-             LEFT JOIN bookings AS b ON b.serviceId = s.id AND b.bookingDate = ?
-             WHERE b.serviceId IS NULL`;
+  const sql = `SELECT s.* FROM services_with_limited_images AS s 
+               LEFT JOIN bookings AS b ON b.serviceId = s.id AND b.bookingDate = ?
+               WHERE b.serviceId IS NULL`;
   con.query(sql, [date], (err, result) => {
     if (err) return res.json({ Error: "Got an error in the sql" });
     return res.json({ Status: "Success", Result: result })
   })
-})
+});
 
 
 app.get('/adminServices', async (req, res) => {
