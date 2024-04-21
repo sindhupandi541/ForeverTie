@@ -18,7 +18,7 @@ export default function DetailPage() {
     const fetchServiceDetails = async () => {
       try {
         setTimeout(async () => { // Set timeout for 1 second delay
-          const res = await axios.get(`http://localhost:8081/ServiceDetails/${serviceId}`);
+          const res = await axios.get(`https://server-tjm9.onrender.com/ServiceDetails/${serviceId}`);
           const data = res.data;
           setServiceDetails(data);
           setMainImage(data.images[0]);
@@ -45,7 +45,7 @@ export default function DetailPage() {
       const serviceId = serviceDetails.serviceDetails.id;
 
 
-      const res = await axios.post('http://localhost:8081/checkCartItem', {
+      const res = await axios.post('https://server-tjm9.onrender.com/checkCartItem', {
         userId,
         serviceId,
       });
@@ -54,7 +54,7 @@ export default function DetailPage() {
         navigate('/cart')
         return
       }
-      await axios.post('http://localhost:8081/addToCart', {
+      await axios.post('https://server-tjm9.onrender.com/addToCart', {
         userId,
         serviceId,
         price: serviceDetails.serviceDetails.rate,
