@@ -41,7 +41,7 @@ export default function Filter() {
   };
 
   const handleDateClick = (arg) => {
-    console.log(moment(arg.date).format("MM-DD-YYYY"), arg.date);
+    console.log(moment(arg.date).format("YYYY-MM-DD"), arg.date);
     setSelectedDetails(prevState => ({
       ...prevState,
       date: moment(arg.date).format("MM-DD-YYYY")
