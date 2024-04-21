@@ -60,7 +60,7 @@ export default function ImageUploader({service_id,imageslist}) {
   };
   const uploadImage = async (formData) => {
     try {
-      await axios.post('http://localhost:8081/uploadImage', formData, {
+      await axios.post('https://server-tjm9.onrender.com/uploadImage', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
