@@ -262,7 +262,7 @@ app.post('/book', (req, res) => {
 
 app.delete('/emptyCart/:userId', (req, res) => {
   const userId = req.params.userId;
-  const sql = 'DELETE FROM cart WHERE UserId = ?';
+  const sql = 'DELETE FROM Cart WHERE UserId = ?';
   con.query(sql, [userId], (err, result) => {
       if (err) {
           console.error('Error emptying cart:', err);
