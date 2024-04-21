@@ -192,7 +192,7 @@ app.post('/deleteCartItem', async (req, res) => {
   const { userId, itemId } = req.body;
 
   try {
-    const sql = 'DELETE FROM Cart WHERE UserId = ? AND CartId = ?';
+    const sql = 'DELETE FROM Cart WHERE userId  = ?';
     await con.query(sql, [userId, itemId], (err, result) => {
       if (err) {
         console.log("Error deleting item from cart:", err);
