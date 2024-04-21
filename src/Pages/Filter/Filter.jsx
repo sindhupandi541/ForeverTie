@@ -21,7 +21,7 @@ export default function Filter() {
   useEffect(() => {
     async function getAddresses() {
       try {
-        const res = await axios.get('http://localhost:8081/filter');
+        const res = await axios.get('https://server-tjm9.onrender.com/filter');
         const uniqueAddresses = removeDuplicates(res.data.Result, 'address');
         setAddresses(uniqueAddresses);
       } catch (error) {
