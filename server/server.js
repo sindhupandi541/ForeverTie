@@ -88,8 +88,8 @@ app.get('/getServices', (req, res) => {
   const address = req.query.address;
   // console.log(address);
   const sql = `SELECT s.*
-  FROM marriage.services_with_limited_images AS s
-  LEFT JOIN marriage.bookings AS b ON b.serviceId = s.id AND b.bookingDate = ? 
+  FROM services_with_limited_images AS s
+  LEFT JOIN bookings AS b ON b.serviceId = s.id AND b.bookingDate = ? 
   WHERE b.serviceId IS NULL and s.address =?;
   `;
   con.query(sql, [date,address], (err, result) => {
@@ -100,7 +100,7 @@ app.get('/getServices', (req, res) => {
 
 
 app.get('/adminServices', async (req, res) => {
-  const sql = 'SELECT * FROM marriage.services_with_limited_images order by name';
+  const sql = 'SELECT * FROM services_with_limited_images order by name';
   con.query(sql, (err, result) => {
     if (err) return res.json({ Error: "Got an error in the sql" });
     return res.json({ Status: "Success", Result: result })
