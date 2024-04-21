@@ -28,7 +28,7 @@ const navigate = useNavigate('');
           res = await axios.get('https://server-tjm9.onrender.com/adminServices');
         }
         let data = res.data.Result;
-console.log(res.data.Result)
+console.log(res.data, res.data.Result)
         if (category) {
           data = data.filter(image => image.category === category);
         }
