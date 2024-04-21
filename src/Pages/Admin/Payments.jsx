@@ -14,7 +14,7 @@ export default function Payments() {
   useEffect(() => {
     const fetchPaymentHistory = async () => {
       try {
-        const response = await axios.post('http://localhost:8081/payments');
+        const response = await axios.post('https://server-tjm9.onrender.com/payments');
         console.log(response.data.paymentHistory);
         setPaymentHistory(response.data.paymentHistory);
         setLoading(false);
