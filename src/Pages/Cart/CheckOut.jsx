@@ -30,7 +30,7 @@ export default function CheckOut() {
         try {
             if (userId) {
                 setTimeout(async () => {
-                    const res = await axios.post('http://localhost:8081/getCart', { userId: userId });
+                    const res = await axios.post('https://server-tjm9.onrender.com/getCart', { userId: userId });
                     setCartItems(res.data);
                     setIsLoading(false);
                 }, delay);
@@ -71,7 +71,7 @@ export default function CheckOut() {
             try {
                 setIsLoading(true);
                 for (const item of cartItems) {
-                    const res = await axios.post('http://localhost:8081/book', {
+                    const res = await axios.post('https://server-tjm9.onrender.com/book', {
                         userId: userId,
                         serviceId: item.ServiceId,
                         totalPayment: item.TotalPrice,
@@ -91,7 +91,7 @@ export default function CheckOut() {
     
     const emptyCart = async () => {
         try {
-            const res = await axios.delete(`http://localhost:8081/emptyCart/${userId}`);
+            const res = await axios.delete(`https://server-tjm9.onrender.com/emptyCart/${userId}`);
             if (res.data.status === 'Success') {
                 swal({
                     title: 'Payment Successful',
