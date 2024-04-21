@@ -36,7 +36,7 @@ export default function UpdateService() {
 
     const loadImages = async () => {
         try {
-            const res = await axios.get('http://localhost:8081/getUpdatingService', { params: { id: id } });
+            const res = await axios.get('https://server-tjm9.onrender.com/getUpdatingService', { params: { id: id } });
             let data = res.data.Result;
             setinitialValues(data.services[0])
             setValues(data.services[0]);
@@ -74,7 +74,7 @@ export default function UpdateService() {
             setIsLoading(true);
     
             setTimeout(() => {
-                axios.put('http://localhost:8081/updateService', values)
+                axios.put('https://server-tjm9.onrender.com/updateService', values)
                     .then(response => {
                         console.log('Service updated successfully:', response.data);
                         swal({
