@@ -27,7 +27,7 @@ return ;
 }
 axios.post('https://server-tjm9.onrender.com/login', values)
 .then(res => {
-  const { status, message,Id } = res.data;
+  const { status, message,id } = res.data;
   if (status === 'Error') {
     swal({
       title: message,
@@ -40,6 +40,7 @@ axios.post('https://server-tjm9.onrender.com/login', values)
       }
     });
   } else {
+    console.log(status, message,id)
     if(status === 'customer')
     {
       navigate('/Filter')
@@ -48,7 +49,7 @@ axios.post('https://server-tjm9.onrender.com/login', values)
       navigate('/admin')
     }
     window.sessionStorage.setItem('UserType',status);
-    window.sessionStorage.setItem('UserId',Id);
+    window.sessionStorage.setItem('UserId',id);
   }
 })
 .catch(error => {
