@@ -21,7 +21,7 @@ export default function Cart() {
     try {
       if (userId) {
         setTimeout(async () => {
-          const res = await axios.post('http://localhost:8081/getCart', { userId: userId });
+          const res = await axios.post('https://server-tjm9.onrender.com/getCart', { userId: userId });
           // console.log(res.data);
           setCartItems(res.data);
           setIsLoading(false);
@@ -35,7 +35,7 @@ export default function Cart() {
   };
   const handleDeleteItem = async (itemId) => {
     try {
-      await axios.post('http://localhost:8081/deleteCartItem', { userId: userId, itemId: itemId });
+      await axios.post('https://server-tjm9.onrender.com/deleteCartItem', { userId: userId, itemId: itemId });
       fetchCartItems();
     } catch (error) {
       console.error('Error deleting item from cart:', error);
