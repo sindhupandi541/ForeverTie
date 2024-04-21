@@ -17,7 +17,7 @@ export default function PaymentHistory() {
     const fetchPaymentHistory = async () => {
       try {
         const userId = window.sessionStorage.getItem('UserId');
-        const response = await axios.post('http://localhost:8081/paymentHistory', { userId });
+        const response = await axios.post('https://server-tjm9.onrender.com', { userId });
         console.log(response.data.paymentHistory);
         setPaymentHistory(response.data.paymentHistory);
         setLoading(false);
