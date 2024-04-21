@@ -289,13 +289,13 @@ app.post('/addService', (req, res) => {
 app.delete('/deleteService/:serviceId', async (req, res) => {
   const serviceId = req.params.serviceId;
 console.log(serviceId);
+    con.query('DELETE FROM service_images WHERE service_id = ?',serviceId);
     con.query('DELETE FROM services WHERE id = ?', serviceId, function(err, result) {
       if (err) { 
         return res.status(500).json({ success: false, message: 'Error deleting from services table' });
       }
             res.json({ success: true, message: 'Successfully Deleted' });
     });
-    con.query('DELETE FROM service_images WHERE service_id = ?',serviceId);
 });
 
 app.get('/getUpdatingService', (req, res) => {
