@@ -24,7 +24,7 @@ export default function AddService() {
         const hasNoErrors = Object.values(values).every(value => value !== '');
         if (hasNoErrors) {
             try {
-                const res = await axios.post('http://localhost:8081/addService', values);
+                const res = await axios.post('https://server-tjm9.onrender.com/addService', values);
                 console.log(res.data.id);
 
                 setinsertedId(res.data.id);
