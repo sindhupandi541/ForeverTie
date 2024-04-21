@@ -88,7 +88,7 @@ app.get('/getServices', (req, res) => {
   const address = req.query.address;
   console.log(date);
 const sql = `SELECT s.* FROM services_with_limited_images AS s 
-             LEFT JOIN bookings AS b ON b.serviceId = s.id AND b.bookingDate = '${date}' 
+             LEFT JOIN bookings AS b ON b.serviceId = s.id AND b.bookingDate = ?
              WHERE b.serviceId IS NULL`;
   con.query(sql, [date], (err, result) => {
     if (err) return res.json({ Error: "Got an error in the sql" });
