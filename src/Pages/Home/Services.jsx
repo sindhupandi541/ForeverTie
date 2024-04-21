@@ -22,9 +22,9 @@ const navigate = useNavigate('');
     try {
       setTimeout(async () => {
         if (window.sessionStorage.getItem('UserType') === 'customer') {
-          res = await axios.get('http://localhost:8081/getServices', { params: { date: date,address:address } });
+          res = await axios.get('https://server-tjm9.onrender.com/getServices', { params: { date: date,address:address } });
         } else {
-          res = await axios.get('http://localhost:8081/adminServices');
+          res = await axios.get('https://server-tjm9.onrender.com/adminServices');
         }
         let data = res.data.Result;
 
