@@ -5,7 +5,7 @@ export default function Caters() {
   return (
     <>
     <LandingNav userLoggedIn='admin'/>
-    <Services category='caterer'/>
+    <Services category='cater'/>
     </>
   )
 }
