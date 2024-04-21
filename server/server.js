@@ -92,10 +92,14 @@ app.get('/getServices', (req, res) => {
                LEFT JOIN bookings AS b ON b.serviceId = s.id AND b.bookingDate = ?
                WHERE b.serviceId IS NULL`;
   con.query(sql, [date], (err, result) => {
-    if (err) return res.json({ Error: "Got an error in the sql" });
-    return res.json({ Status: "Success", Result: result })
-  })
+    if (err) {
+      console.error("Error executing SQL query:", err);
+      return res.status(500).json({ Error: "An error occurred while fetching services" });
+    }
+    return res.json({ Status: "Success", Result: result });
+  });
 });
+
 
 
 app.get('/adminServices', async (req, res) => {
