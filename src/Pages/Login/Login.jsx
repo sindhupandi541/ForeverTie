@@ -26,37 +26,35 @@ function handleOnClick() {
 return ;
 }
 axios.post('https://server-tjm9.onrender.com/login', values)
-.then(res => {
-  const { status, message,id } = res.data;
-  if (status === 'Error') {
-    swal({
-      title: message,
-      text: 'Click OK to Register',
-      icon: "error",
-    })
-    .then((success) => {
-      if (success) {
-      navigate('/register');
+  .then(res => {
+    const { status, message, id } = res.data;
+    if (status === 'Error') {
+      swal({
+        title: "Login Failed",
+        text: message,
+        icon: "error",
+      })
+      .then(() => {
+        navigate('/register');
+      });
+    } else {
+      if (status === 'customer') {
+        navigate('/Filter');
+      } else {
+        navigate('/admin');
       }
+      window.sessionStorage.setItem('UserType', status);
+      window.sessionStorage.setItem('UserId', id);
+    }
+  })
+  .catch(error => {
+    console.error("Error in login request:", error);
+    swal({
+      title: "Login Failed",
+      text: "An unexpected error occurred. Please try again later.",
+      icon: "error",
     });
-  } else {
-    console.log(status, message,id)
-    if(status === 'customer')
-    {
-      navigate('/Filter')
-    }
-    else{
-      navigate('/admin')
-    }
-    window.sessionStorage.setItem('UserType',status);
-    window.sessionStorage.setItem('UserId',id);
-  }
-})
-.catch(error => {
-  console.error(error);
-});
-
-
+  });
   
 }
   return (
