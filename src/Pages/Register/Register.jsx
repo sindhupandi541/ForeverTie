@@ -30,7 +30,7 @@ export default function Register() {
     const hasNoErrors = Object.keys(validationErrors).length === 0;
     if (hasNoErrors) {
       delete values.ConfirmPassword;
-      axios.post('http://localhost:8081/register', values)
+      axios.post('https://server-tjm9.onrender.com/register', values)
   .then(response => {
     console.log(response.data);
     swal({
