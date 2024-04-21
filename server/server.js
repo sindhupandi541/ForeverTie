@@ -78,7 +78,7 @@ app.post("/uploadImage",upload.single('image'), (req, res) => {
       console.log("Error in registration query:", err);
       return res.status(500).json({ error: "Internal Server Error" });
     }
-    res.json({ message: "Registration successful" });
+    res.json({ message: "upload successful" });
   });
   
 });
@@ -87,7 +87,9 @@ app.get('/getServices', (req, res) => {
   const date = req.query.date;
   const address = req.query.address;
   console.log(date);
-  const sql = 'SELECT s.* FROM services_with_limited_images AS s LEFT JOIN bookings AS b ON b.serviceId = s.id AND b.bookingDate = ? WHERE b.serviceId IS NULL';
+const sql = `SELECT s.* FROM services_with_limited_images AS s 
+             LEFT JOIN bookings AS b ON b.serviceId = s.id AND b.bookingDate = '${date}' 
+             WHERE b.serviceId IS NULL`;
   con.query(sql, [date], (err, result) => {
     if (err) return res.json({ Error: "Got an error in the sql" });
     return res.json({ Status: "Success", Result: result })
