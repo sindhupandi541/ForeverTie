@@ -9,11 +9,17 @@ app.use(cors());
 app.use(cookieParser());
 app.use(express.json());
 
+// const con = mysql.createConnection({
+//   host: "localhost",
+//   user: "root",
+//   password: "Admin@123",
+//   database: "marriage",
+// });
 const con = mysql.createConnection({
-  host: "localhost",
-  user: "root",
-  password: "Admin@123",
-  database: "marriage",
+  host: process.env.HOST,
+  user: process.env.USER,
+  password: process.env.PASSWORD,
+  database: process.env.DATABASE,
 });
 
 con.connect((err) => {
