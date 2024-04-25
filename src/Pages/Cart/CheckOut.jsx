@@ -99,7 +99,7 @@ export default function CheckOut() {
                     icon: "success",
                 });
                 setIsLoading(false);
-                navigate('/cart')
+                navigate('/feedback')
             } else {
                 swal({
                     title: 'Error',
