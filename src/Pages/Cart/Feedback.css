@@ -1,0 +1,16 @@
+.feedback-container{
+    margin: auto;
+    display: grid;
+    justify-content: center;
+    margin-top: 5%;
+    /* border: 1px solid #e72e77; */
+    width: 50%;
+    border-radius: 20px;
+}
+.feed-back-input{
+    margin-top: 5%;
+    border: 1px solid #e72e77;
+    width: 500px !important;
+    border-radius: 20px;
+    height: 300px;
+}
