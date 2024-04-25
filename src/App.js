@@ -19,6 +19,7 @@ import AdminCaters from "./Pages/Admin/Caters";
 import Payments from "./Pages/Admin/Payments";
 import AddService from "./Pages/Admin/AddService";
 import UpdateService from "./Pages/Admin/UpdateService";
+import Feedback from "./Pages/Cart/Feedback";
 function App() {
   return (
     <div className="App">
@@ -44,6 +45,7 @@ function App() {
           <Route path="/payments" element={<Payments />} />
           <Route path="/addService/:category" element={<AddService />} />
           <Route path="/updateService/:id" element={<UpdateService />} />
+          <Route path="/feedback" element={<Feedback />} />
         </Routes>
       </BrowserRouter>
     </div>
